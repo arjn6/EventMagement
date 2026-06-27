@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { EventItem, EventUpsertRequest } from '../models/api.models';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-  private readonly apiBase = 'http://localhost:5129/api/events';
+  private readonly apiBase = `${environment.apiUrl}/api/events`;
 
   constructor(private readonly http: HttpClient) {}
 

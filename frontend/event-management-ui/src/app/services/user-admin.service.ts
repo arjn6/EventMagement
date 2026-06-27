@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthProfile, UpdateUserRoleRequest } from '../models/api.models';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAdminService {
-  private readonly apiBase = 'http://localhost:5129/api/users';
+  private readonly apiBase = `${environment.apiUrl}/api/users`;
 
   constructor(private readonly http: HttpClient) {}
 

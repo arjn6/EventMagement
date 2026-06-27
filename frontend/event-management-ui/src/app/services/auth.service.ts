@@ -4,12 +4,13 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { AuthProfile, CreateOrganizerRequest, LoginRequest, LoginResponse, RegisterRequest, UpdateProfileRequest } from '../models/api.models';
 import { TokenStorageService } from './token-storage.service';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly apiBase = 'http://localhost:5129/api/auth';
+  private readonly apiBase = `${environment.apiUrl}/api/auth`;
   private readonly currentUserSubject = new BehaviorSubject<AuthProfile | null>(null);
   readonly currentUser$ = this.currentUserSubject.asObservable();
   private expiryTimer: ReturnType<typeof setTimeout> | null = null;
