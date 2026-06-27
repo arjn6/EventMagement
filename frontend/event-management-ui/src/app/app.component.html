@@ -1,0 +1,74 @@
+<div class="app-layout">
+  <div class="api-down-banner" *ngIf="isApiDown">
+    ⚠️ Unable to connect to the server. Please check your connection or try again later.
+  </div>
+  <header class="header">
+    <div class="header-container">
+      <div class="header-brand">
+        <h1 routerLink="/upcoming-events">🎯 EventHub</h1>
+      </div>
+
+      <nav class="header-nav">
+        <a *ngIf="user?.role === 'Attendee'" routerLink="/bookings" routerLinkActive="active">My Bookings</a>
+        <a *ngIf="user?.role === 'Admin' || user?.role === 'Organizer'" routerLink="/manage-events" routerLinkActive="active">Manage Events</a>
+        <a *ngIf="user?.role === 'Admin'" routerLink="/requests" routerLinkActive="active">Requests</a>
+        <a *ngIf="user?.role === 'Admin'" routerLink="/admin/users" routerLinkActive="active">Manage Users</a>
+      </nav>
+
+      <div class="header-user">
+        <div *ngIf="!user" class="user-actions">
+          <a routerLink="/login" class="btn-link">Login</a>
+          <a routerLink="/register" class="btn-register">Register</a>
+        </div>
+
+        <div *ngIf="user" class="user-menu">
+          <button class="user-profile" (click)="toggleUserMenu()">
+            <span class="avatar">👤</span>
+            <span class="user-copy">
+              <span class="profile-name">{{ displayName() }}</span>
+              <span class="username"><span class="at-sign">&#64;</span>{{ user.username }}</span>
+            </span>
+            <span class="role-badge">{{ roleEmoji(user.role) }} {{ user.role }}</span>
+          </button>
+          <div class="user-dropdown" *ngIf="showUserMenu">
+            <a routerLink="/profile" class="dropdown-item" (click)="closeUserMenu()">Profile</a>
+            <hr class="dropdown-divider" />
+            <button type="button" class="dropdown-item logout" (click)="logout()">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>EventHub</h3>
+        <p>Professional event management platform</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a routerLink="/upcoming-events">Upcoming Events</a></li>
+          <li><a *ngIf="!user" routerLink="/login">Login</a></li>
+          <li><a *ngIf="!user" routerLink="/register">Register</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Information</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 EventHub. All rights reserved.</p>
+    </div>
+  </footer>
+</div>

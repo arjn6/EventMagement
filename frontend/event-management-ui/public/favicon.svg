@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="EventHub calendar icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f8fff"/>
+      <stop offset="1" stop-color="#21c57a"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="10" width="52" height="48" rx="12" fill="#061022"/>
+  <rect x="6" y="10" width="52" height="14" rx="12" fill="url(#bg)"/>
+  <rect x="18" y="5" width="5" height="12" rx="2.5" fill="#dff4ff"/>
+  <rect x="41" y="5" width="5" height="12" rx="2.5" fill="#dff4ff"/>
+  <circle cx="22" cy="34" r="5" fill="#1f8fff"/>
+  <circle cx="32" cy="34" r="5" fill="#21c57a"/>
+  <circle cx="42" cy="34" r="5" fill="#1f8fff"/>
+  <path d="M32 40l2.2 4.4 4.8.7-3.5 3.4.8 4.8-4.3-2.3-4.3 2.3.8-4.8-3.5-3.4 4.8-.7z" fill="#ffd889"/>
+</svg>

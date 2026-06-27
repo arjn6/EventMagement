@@ -1,0 +1,123 @@
+@EventManagementAPI_HostAddress = http://localhost:5129
+
+GET {{EventManagementAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{EventManagementAPI_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+	"username": "admin",
+	"password": "admin123"
+}
+
+###
+
+POST {{EventManagementAPI_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+	"username": "user1",
+	"password": "user123",
+	"role": "Attendee"
+}
+
+###
+
+POST {{EventManagementAPI_HostAddress}}/api/auth/organizers
+Authorization: Bearer {{jwt_token}}
+Content-Type: application/json
+
+{
+	"username": "neworganizer",
+	"password": "organizer123"
+}
+
+###
+
+GET {{EventManagementAPI_HostAddress}}/api/auth/me
+Authorization: Bearer {{jwt_token}}
+
+###
+
+GET {{EventManagementAPI_HostAddress}}/api/events
+Authorization: Bearer {{jwt_token}}
+
+###
+
+GET {{EventManagementAPI_HostAddress}}/api/events?search=tech
+Authorization: Bearer {{jwt_token}}
+
+###
+
+POST {{EventManagementAPI_HostAddress}}/api/events
+Authorization: Bearer {{jwt_token}}
+Content-Type: application/json
+
+{
+	"eventName": "Tech Meetup",
+	"description": "Monthly networking event",
+	"eventDate": "2026-07-15T18:30:00Z",
+	"vacancy": 50
+}
+
+###
+
+POST {{EventManagementAPI_HostAddress}}/api/bookings
+Authorization: Bearer {{jwt_token}}
+Content-Type: application/json
+
+{
+	"eventId": 1
+}
+
+###
+
+DELETE {{EventManagementAPI_HostAddress}}/api/bookings/1
+Authorization: Bearer {{jwt_token}}
+
+###
+
+POST {{EventManagementAPI_HostAddress}}/api/events/1/cancel
+Authorization: Bearer {{jwt_token}}
+
+###
+
+GET {{EventManagementAPI_HostAddress}}/api/users
+Authorization: Bearer {{jwt_token}}
+
+###
+
+PUT {{EventManagementAPI_HostAddress}}/api/users/2/role
+Authorization: Bearer {{jwt_token}}
+Content-Type: application/json
+
+{
+	"role": "Organizer"
+}
+
+###
+
+GET {{EventManagementAPI_HostAddress}}/api/bookings/history
+Authorization: Bearer {{jwt_token}}
+
+###
+
+GET {{EventManagementAPI_HostAddress}}/api/bookings/summary
+Authorization: Bearer {{jwt_token}}
+
+###
+
+PUT {{EventManagementAPI_HostAddress}}/api/auth/profile
+Authorization: Bearer {{jwt_token}}
+Content-Type: application/json
+
+{
+	"username": "updateduser",
+	"currentPassword": "admin123",
+	"newPassword": "admin1234"
+}
+
+###
