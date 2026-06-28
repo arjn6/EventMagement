@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: "https://eventmanagement-backend-dr6z.onrender.com/api"
+  apiUrl: "http://localhost:5129"
 } as const;
