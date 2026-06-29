@@ -9,6 +9,12 @@ const environmentFile = `export const environment = {\n  production: ${isProduct
 const targetDirectory = resolve('src/environments');
 const targetFile = resolve(targetDirectory, 'environment.ts');
 
+console.log('==============================');
+console.log('NODE_ENV :', process.env.NODE_ENV);
+console.log('API_URL  :', process.env.API_URL);
+console.log('Using API:', apiUrl);
+console.log('==============================');
+
 mkdirSync(targetDirectory, { recursive: true });
 writeFileSync(targetFile, environmentFile, 'utf8');
 
